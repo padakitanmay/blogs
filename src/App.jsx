@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
-import {Footer, Header} from "./components/index"
+import { Footer, Header } from "./components/index";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -22,10 +22,11 @@ function App() {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-            <div className="w-full block">
-                <Header/>
-                <Footer/>
+        <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+            <div className='w-full block'>
+                <Header />
+                HALLO 
+                <Footer />
             </div>
         </div>
     );
