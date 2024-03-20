@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Protected({ childern, authentication = true }) {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(true);
-    const authStatus = useSelector((state) => state.authStatus.status);
+    const authStatus = useSelector((state) => state.auth.status);
 
     useEffect(() => {
         if (authentication && authStatus !== authentication) {

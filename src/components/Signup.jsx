@@ -19,6 +19,7 @@ function Signup() {
             if (userData) dispatch(login(userData));
             navigate("/");
         } catch (error) {
+            console.log(error);
             setError(error.message);
         }
     };
