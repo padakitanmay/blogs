@@ -3,20 +3,24 @@ import appwriteService from "../appwrite/config";
 import { PostCard, Container } from "../components/index";
 
 function AllPosts() {
-    const [posts, setPosts] = useEffect([]);
-    useEffect(() => {}, []);
-    appwriteService.getPosts([]).them((posts) => {
-        if (posts) {
-            setPosts(posts.documents);
-        }
-    });
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        appwriteService.getPosts().then((posts) => {
+            if (posts) {
+                setPosts(posts.documents);
+            }
+        });
+    }, []);
+
     return (
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
+                    {console.log(posts)}
                     {posts.map((post) => {
+                        // console.log(post);
                         <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard post={post} />
+                            <PostCard {...post} />
                         </div>;
                     })}
                 </div>
