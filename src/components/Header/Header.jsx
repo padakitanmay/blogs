@@ -1,4 +1,5 @@
 import React from "react";
+import authService from "../../appwrite/auth";
 import { Container, Logo, LogoutBtn } from "../index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
     const authStatus = useSelector((state) => state.auth.status);
+    const user = useSelector((state) => state.auth.userData);
     const navigate = useNavigate();
 
     const navItems = [
@@ -45,6 +47,7 @@ function Header() {
                             <Logo width='70px' />
                         </Link>
                     </div>
+                    {authStatus && <li>{user.name}</li>}
                     <ul className='flex ml-auto'>
                         {navItems.map((item) =>
                             item.active ? (
@@ -58,6 +61,7 @@ function Header() {
                                 </li>
                             ) : null
                         )}
+
                         {authStatus && (
                             <li>
                                 <LogoutBtn />

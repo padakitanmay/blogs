@@ -31,13 +31,15 @@ export default function Post() {
             }
         });
     };
+    console.log(post);
+    // const fileURL = appwriteService.getFilePreview(post.featuredImage);
 
     return post ? (
         <div className='py-8'>
             <Container>
                 <div className='w-full flex justify-center mb-4 relative border rounded-xl p-2'>
                     <img
-                        src={post.featuredImage}
+                        src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
                         className='rounded-xl '
                     />
