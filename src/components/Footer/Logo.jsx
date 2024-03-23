@@ -4,7 +4,7 @@ function Logo({ width = "10px" }) {
     return (
         <div>
             <img
-                src='public\icon.png'
+                src='icon.png'
                 className={`${width}`}
             />
         </div>
