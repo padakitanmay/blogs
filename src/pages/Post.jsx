@@ -4,6 +4,8 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components/index";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import authService from "../appwrite/auth";
+import { FormProvider } from "react-hook-form";
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -12,8 +14,8 @@ export default function Post() {
 
     const userData = useSelector((state) => state.auth.userData);
     let isAuthor = post && userData ? post.userId === userData.$id : false;
-    if(userData.$id=="admin"){
-        isAuthor=true;
+    if (userData.$id == "admin") {
+        isAuthor = true;
     }
 
     useEffect(() => {
@@ -33,9 +35,6 @@ export default function Post() {
             }
         });
     };
-    console.log(post);
-    // const fileURL = appwriteService.getFilePreview(post.featuredImage);
-
     return post ? (
         <div className='py-8'>
             <Container>
@@ -63,7 +62,10 @@ export default function Post() {
                     <h1 className='text-2xl font-bold'>{post.title}</h1>
                 </div>
                 <div className='browser-css'>{parse(post.content)}</div>
+                {/* <div>Author: {authService.getCurrentUserByID(post.userId).name}</div> */}
             </Container>
         </div>
-    ) : <h1>NO POST</h1>;
+    ) : (
+        <h1>NO POST</h1>
+    );
 }
