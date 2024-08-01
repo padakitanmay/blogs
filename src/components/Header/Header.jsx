@@ -46,7 +46,7 @@ function Header() {
                             <Logo width='70px' />
                         </Link>
                     </div>
-                    {authStatus && <li>{user.name}</li>}
+                    {authStatus && <li>{user?.name}</li>}
                     <ul className='flex ml-auto'>
                         {navItems.map((item) =>
                             item.active ? (
